@@ -1,0 +1,36 @@
+<?php
+
+print("================================");
+
+function isanagram($string1, $string2)
+{
+    $string1 = strtolower($string1);
+    $string2 = strtolower($string2);
+
+    $string1 = str_replace(' ', '', $string1);
+    $string2 = str_replace(' ', '', $string2);
+
+    $string1 = preg_replace('/[^a-z]/', '', $string1);
+    $string2 = preg_replace('/[^a-z]/', '', $string2);
+
+    $chars1 = str_split($string1);
+    $chars2 = str_split($string2);
+
+    sort($chars1);
+    sort($chars2);
+
+    $sorted_str1 = implode('', $chars1);
+    $sorted_str2 = implode('', $chars2);
+
+    if ($sorted_str1 === $sorted_str2) {
+        echo "</p>To są anagramy</p>";
+    } else {
+        echo "</p>To nie są anagramy</p>";
+    }
+}
+
+$string1 = "arbuz";
+$string2 = "burza";
+
+isanagram($string1, $string2);
+?>
